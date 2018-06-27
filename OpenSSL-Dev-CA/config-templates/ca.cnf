@@ -1,0 +1,94 @@
+[ ca ]
+default_ca 						= ca_default
+
+[ ca_default ]
+dir 							= .
+certs 							= $dir/certs
+crl_dir 						= $dir/crl
+new_certs_dir 					= $dir/temp
+database 						= $dir/db/##ca##.db
+serial 							= $dir/db/##ca##.serial
+RANDFILE 						= $dir/private/##ca##.rand
+
+private_key 					= $dir/private/##ca##.key
+certificate 					= $dir/certs/##ca##.crt
+
+crlnumber 						= $dir/db/##ca##.crlnumber
+crl 							= $dir/crl/##ca##.crl
+crl_extensions 					= crl_ext
+default_crl_days 				= 30
+
+default_md 						= sha256
+name_opt 						= ca_default
+cert_opt 						= ca_default
+default_days 					= 3650
+preserve 						= no
+policy 							= policy_strict
+
+[ policy_strict ]
+countryName 					= match
+stateOrProvinceName 			= match
+organizationName 				= match
+organizationalUnitName 			= optional
+commonName 						= supplied
+emailAddress 					= optional
+
+[ client_cert ]
+basicConstraints 				= CA:FALSE
+nsCertType 						= client, email
+nsComment 						= "OpenSSL Generated Client Certificate"
+subjectKeyIdentifier 			= hash
+authorityKeyIdentifier 			= keyid,issuer
+keyUsage 						= critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage 				= clientAuth, emailProtection
+
+[ server_cert ]
+basicConstraints 				= CA:FALSE
+nsCertType 						= server
+nsComment 						= "OpenSSL Generated Server Certificate"
+subjectKeyIdentifier 			= hash
+authorityKeyIdentifier 			= keyid,issuer:always
+keyUsage 						= critical, digitalSignature, keyEncipherment
+extendedKeyUsage 				= serverAuth
+subjectAltName 					= @alt_names
+
+[ crl_ext ]
+authorityKeyIdentifier 			= keyid:always
+
+[ ocsp ]
+basicConstraints 				= CA:FALSE
+subjectKeyIdentifier 			= hash
+authorityKeyIdentifier 			= keyid,issuer
+keyUsage 						= critical, digitalSignature
+extendedKeyUsage 				= critical, OCSPSigning
+
+[ req ]
+default_bits 					= 4096
+distinguished_name 				= req_distinguished_name
+string_mask 					= utf8only
+default_md 						= sha256
+prompt 							= no
+
+[ v3_ca ]
+subjectKeyIdentifier 			= hash
+authorityKeyIdentifier 			= keyid:always,issuer
+basicConstraints 				= critical, CA:true
+keyUsage 						= critical, digitalSignature, cRLSign, keyCertSign
+
+[ v3_intermediate_ca ]
+subjectKeyIdentifier 			= hash
+authorityKeyIdentifier 			= keyid:always,issuer
+basicConstraints 				= critical, CA:true, pathlen:0
+keyUsage 						= critical, digitalSignature, cRLSign, keyCertSign
+
+[ req_distinguished_name ]
+countryName 			= GB
+stateOrProvinceName 	= England
+localityName 			= London
+0.organizationName 		= RiskFirst
+organizationalUnitName  = ##dn##
+commonName				= ##dn##
+emailAddress 			= ##dn##@riskfirst.com
+
+[ alt_names ]
+DNS.1 = ##dn##
