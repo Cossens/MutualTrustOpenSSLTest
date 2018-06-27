@@ -55,7 +55,7 @@ Instructions:
 * See forbidden
 
 ## Next Steps
-    Use the [Sample Microservice project](https://riskfirst.visualstudio.com/Developers/Developers%20Team/_git/OpenSSL-Dev-Service-Example) to set up a ASPNETCORE microservice authenticated using mutual intermediate trust to provide basic auth
+    Use the Sample Microservice project to set up a ASPNETCORE microservice authenticated using mutual intermediate trust to provide basic auth
 
 OR 
 

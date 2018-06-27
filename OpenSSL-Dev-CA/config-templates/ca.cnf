@@ -85,10 +85,10 @@ keyUsage 						= critical, digitalSignature, cRLSign, keyCertSign
 countryName 			= GB
 stateOrProvinceName 	= England
 localityName 			= London
-0.organizationName 		= RiskFirst
+0.organizationName 		= Organisation
 organizationalUnitName  = ##dn##
 commonName				= ##dn##
-emailAddress 			= ##dn##@riskfirst.com
+emailAddress 			= ##dn##@Organisation.com
 
 [ alt_names ]
 DNS.1 = ##dn##
